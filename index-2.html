@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TODAYISAMOVIE</title>
+<meta name="description" content="Content for local businesses by TODAYISAMOVIE.">
+<meta name="theme-color" content="#131820">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: #131820;
+    color: #ECE7DD;
+    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: calc(28px + env(safe-area-inset-top, 0px)) 20px calc(28px + env(safe-area-inset-bottom, 0px));
+    text-align: center;
+  }
+  .wordmark { font-size: 0.85rem; letter-spacing: 0.08em; color: #98A1AD; }
+  h1 { font-size: clamp(1.6rem, 5.5vw, 2.8rem); line-height: 1.08; max-width: 18ch; }
+  .video { width: 100%; max-width: 960px; aspect-ratio: 2.401 / 1; background: #000; border-radius: 8px; overflow: hidden; }
+  .video iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 100%; max-width: 420px; min-height: 60px;
+    background: #E8A33D; color: #1A1206;
+    font-size: 1rem; letter-spacing: 0.05em;
+    text-decoration: none; border-radius: 6px;
+  }
+  .btn:hover { background: #F1B355; }
+  .btn:focus-visible { outline: 3px solid #ECE7DD; outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+  <div class="wordmark">TODAYISAMOVIE</div>
+
+  <!-- Delete this line if you want only the video and button -->
+  <h1>Content that converts</h1>
+
+  <div class="video">
+    <iframe id="vsl" title="THE AGENCY" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <a class="btn" id="book" href="#" target="_blank" rel="noopener">Book a call</a>
+
+<script>
+  /* ===== EDIT THESE TWO ===== */
+  const VIMEO_ID = "1232213228";
+  const VIMEO_HASH = "b3bcbf678d"; // needed because the video is unlisted
+  const BOOKING_URL = "https://calendly.com/akashhans/strategy-call"; // your booking link
+  /* ========================== */
+
+  document.getElementById("vsl").src =
+    "https://player.vimeo.com/video/" + VIMEO_ID + "?h=" + VIMEO_HASH + "&badge=0&autopause=0&title=0&byline=0&portrait=0&playsinline=1";
+
+  // Passes ?src=card through so you can tell which bookings came from business cards
+  let href = BOOKING_URL;
+  try {
+    const u = new URL(BOOKING_URL);
+    new URLSearchParams(location.search).forEach((v, k) => u.searchParams.set(k, v));
+    href = u.toString();
+  } catch (e) {}
+  document.getElementById("book").href = href;
+</script>
+</body>
+</html>

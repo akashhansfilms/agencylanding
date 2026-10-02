@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/card",
+      "destination": "/?src=card&utm_source=business_card&utm_medium=qr",
+      "permanent": false
+    }
+  ]
+}
